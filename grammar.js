@@ -780,8 +780,8 @@ module.exports = grammar({
 
     while_statement: $ => seq(
       'while',
-      field('condition', $.parenthesized_expression),
-      field('body', $._statement),
+      field('condition', $.optionally_parenthesized_expression),
+      field('body', $.block_statement),
     ),
 
     do_statement: $ => seq(
