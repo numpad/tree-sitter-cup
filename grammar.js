@@ -1,7 +1,10 @@
 /**
- * @file C grammar for tree-sitter
- * @author Max Brunsfeld
+ * @file Cup grammar for tree-sitter
+ * @author Christian Schäl
  * @license MIT
+ *
+ * Adapted from tree-sitter-c by Max Brunsfeld.
+ * https://github.com/tree-sitter/tree-sitter-c
  */
 
 /* eslint-disable arrow-parens */
