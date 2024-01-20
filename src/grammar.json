@@ -1,5 +1,5 @@
 {
-  "name": "c",
+  "name": "cup",
   "word": "identifier",
   "rules": {
     "translation_unit": {
@@ -4641,6 +4641,26 @@
         }
       ]
     },
+    "block_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_statement"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
     "_top_level_expression_statement": {
       "type": "SEQ",
       "members": [
@@ -4699,7 +4719,7 @@
             "name": "condition",
             "content": {
               "type": "SYMBOL",
-              "name": "parenthesized_expression"
+              "name": "optionally_parenthesized_expression"
             }
           },
           {
@@ -4707,7 +4727,7 @@
             "name": "consequence",
             "content": {
               "type": "SYMBOL",
-              "name": "_statement"
+              "name": "block_statement"
             }
           },
           {
@@ -4838,7 +4858,7 @@
           "name": "condition",
           "content": {
             "type": "SYMBOL",
-            "name": "parenthesized_expression"
+            "name": "optionally_parenthesized_expression"
           }
         },
         {
@@ -4846,7 +4866,7 @@
           "name": "body",
           "content": {
             "type": "SYMBOL",
-            "name": "_statement"
+            "name": "block_statement"
           }
         }
       ]
@@ -7258,6 +7278,15 @@
         {
           "type": "STRING",
           "value": ")"
+        }
+      ]
+    },
+    "optionally_parenthesized_expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
         }
       ]
     },
