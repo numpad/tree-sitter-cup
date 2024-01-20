@@ -732,6 +732,10 @@ module.exports = grammar({
       $._statement,
     ),
 
+    block_statement: $ => seq(
+      '{', repeat($._statement), '}',
+    ),
+
     // This is missing binary expressions, others were kept so that macro code can be parsed better and code examples
     _top_level_expression_statement: $ => seq(
       $._expression_not_binary,
@@ -748,8 +752,8 @@ module.exports = grammar({
 
     if_statement: $ => prec.right(seq(
       'if',
-      field('condition', $.parenthesized_expression),
-      field('consequence', $._statement),
+      field('condition', $.optionally_parenthesized_expression),
+      field('consequence', $.block_statement),
       optional(field('alternative', $.else_clause)),
     )),
 
@@ -1115,6 +1119,10 @@ module.exports = grammar({
       '(',
       choice($._expression, $.comma_expression),
       ')',
+    ),
+
+    optionally_parenthesized_expression: $ => choice(
+      $._expression,
     ),
 
     initializer_list: $ => seq(
